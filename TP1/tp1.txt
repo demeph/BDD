@@ -1,0 +1,60 @@
+TP 1
+
+Q1
+
+    CREATE TABLE Clients (
+      idcl number PRIMARY KEY,
+      nom varchar2(20),
+      pren varchar2(15),
+      adr varchar2(30),
+      tel varchar2(12)
+    );
+    
+    CREATE TABLE Livres(
+      refl varchar2(10) PRIMARY KEY,
+      titre varchar2(20),
+      auteur varchar2(20),
+      genre varchar2(15)
+    );
+    
+    CREATE TABLE Achats(
+      idcl number REFERENCES Clients,
+      refl varchar2(10) REFERENCES Livres,
+      dateachat date,
+      PRIMARY KEY(idcl,refl,dateachat)
+    );
+    
+    CREATE TABLE Avis(
+      idcl number REFERENCES Clients,
+      refl varchar2(10) REFERENCES LIVRES,
+      note number(4,2),
+      commentaire varchar2(50),
+      PRIMARY KEY(idcl,refl)
+    );
+
+INSERT INTO Achats Values (1,'O9REPI',to_date('01-01-2017','DD-MM-YYYY'));
+INSERT INTO Achats Values (2,'O9REPO',to_date('02-01-2017','DD-MM-YYYY'));
+DELETE FROM Achats WHERE idcl = 2;
+
+
+
+Q2
+
+    1.
+    SELECT titre,auteur,genre
+    FROM Livres natural join achats
+    GROUP BY refl
+    having count(*) >= 10000
+    ORDER BY ASC
+
+    2. 
+    Select titre,auteur,genre
+    from Avis natural join Livres
+    Group by refl
+    having SUM(note)/count(*) > 16
+
+    3.
+    Select idcl,titre, note
+    FROM Clients natural join Achats natural join Avis
+    Where Avis.commentaire = NULL
+    
