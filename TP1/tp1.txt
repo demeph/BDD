@@ -42,19 +42,24 @@ Q2
 
     1.
     SELECT titre,auteur,genre
-    FROM Livres natural join achats
+    FROM Livres natural join Achats
     GROUP BY refl
-    having count(*) >= 10000
+    having count(*) >= 2
     ORDER BY ASC
 
     2. 
     Select titre,auteur,genre
     from Avis natural join Livres
-    Group by refl
-    having SUM(note)/count(*) > 16
+    Group by titre,auteur,genre
+    having AVG(note) > 16
 
     3.
     Select idcl,titre, note
     FROM Clients natural join Achats natural join Avis
     Where Avis.commentaire = NULL
     
+Select titre,auteur,genre From Livres natural join Achats Group BY titre,auteur,genre having count(*)> 2
+
+Select titre,auteur,genre from Avis natural join Livres Group by titre,auteur,genre having AVG(note) > 16;
+
+select idcl,titre,note
