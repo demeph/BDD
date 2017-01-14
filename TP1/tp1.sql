@@ -5,26 +5,26 @@ DROP TABLE Livres;
 
 
 CREATE TABLE Clients (
-      idcl number PRIMARY KEY,
-      nom varchar2(20),
-      pren varchar2(15),
-      adr varchar2(30),
-      tel varchar2(12)
-    );
+  idcl number PRIMARY KEY,
+  nom varchar2(20),
+  pren varchar2(15),
+  adr varchar2(30),
+  tel varchar2(12)
+);
     
-    CREATE TABLE Livres(
-      refl varchar2(10) PRIMARY KEY,
-      titre varchar2(20),
-      auteur varchar2(20),
-      genre varchar2(15)
-    );
+CREATE TABLE Livres(
+  refl varchar2(10) PRIMARY KEY,
+  titre varchar2(20),
+  auteur varchar2(20),
+  genre varchar2(15)
+);
     
-    CREATE TABLE Achats(
-      idcl number REFERENCES Clients,
-      refl varchar2(10) REFERENCES Livres,
-      dateachat date CHECK (dateachat > to_date('01-01-2008','DD-MM-YYYY') and dateachat < to_date('31-12-2013','DD-MM-YYYY') ),
-      PRIMARY KEY(idcl,refl,dateachat)
-    );
+CREATE TABLE Achats(
+  idcl number REFERENCES Clients,
+  refl varchar2(10) REFERENCES Livres,
+  dateachat date CHECK (dateachat BETWEEN to_date('01-01-2008','DD-MM-YYYY') and to_date('31-12-2013','DD-MM-YYYY') ),
+  PRIMARY KEY(idcl,refl,dateachat)
+);
     
 CREATE TABLE Avis(
   idcl number REFERENCES Clients,
@@ -75,6 +75,7 @@ INSERT INTO AVIS Values (6,'03AA',17,NULL);
 
 -- Suppression
 DELETE FROM Clients where idcl = 7;
+DELETE FROM Achats where idcl = 1 and refl = '02A3';
 
 
 -- check contrainnts
@@ -83,6 +84,8 @@ INSERT INTO Achats Values (4,'011A',to_date('02-12-2003','DD-MM-YYYY'));
 INSERT INTO AVIS Values (6,'03AA',22,NULL);
 INSERT INTO AVIS Values (6,'03AA',0,NULL);
 
+
+-- Requets SQL format lisible
 --    1.
 --    SELECT titre,auteur,genre
 --    FROM Livres natural join Achats
@@ -100,9 +103,13 @@ INSERT INTO AVIS Values (6,'03AA',0,NULL);
 --    Select idcl,titre, note
 --    FROM ( Clients c right outer join Avis a on c.idcl=a.idcl ) join Livres l on l.refl= a.refl
 --    WHERE Avis.commentaire = NULL
-    
+ 
+-- Requets SQL formal SQL Command
+-- 1.   
 Select titre,auteur,genre From Livres natural join Achats Group BY titre,auteur,genre having count(*)> 2;
 
+-- 2.
 Select titre,auteur,genre from Avis natural join Livres Group by titre,auteur,genre having AVG(note) > 16;
 
+-- 3.
 Select nom,pren,l.titre,note from ( Clients c right outer join Avis a on c.idcl=a.idcl ) join Livres l on l.refl= a.refl where a.commentaire is NULL;
