@@ -1,5 +1,6 @@
 -- TP 1 de Bases de données réalisé par
 -- PHALAVANDISHVILI Demetre & JAMET Felix
+-- Groupe 601B
 -- Q1 
 -- Les tables Achats et Avis possedent des clés etrangeres qui se trouvent dans les tables Livre et Clients, pour supprimer les tables on doit respecter l'ordre de suppression; c'est-à-dire on doit d'abors supprimer les tables qui contiennent les clés etrangeres et puis les tables qui n'ont pas les clés etrangeres
 DROP TABLE Achats;
