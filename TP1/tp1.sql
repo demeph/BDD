@@ -75,10 +75,14 @@ INSERT INTO AVIS Values (6,'03AA',17,NULL);
 
 -- Suppression
 DELETE FROM Clients where idcl = 7;
+-- Ca donne l'erreur sur l'integralité de bdd; car idcl = 6 est present dans tableau Achats et Avis 
+-- Si on voulait supprimer iccl = 6, pour ca il faut d'abord supprimer les lignes qui correspond à idcl = 6 dans les tableaux achats et avis
+DELETE FROM Clients where idcl = 6; 
+DELETE FROM Avis where idcl = 6;
 DELETE FROM Achats where idcl = 1 and refl = '02A3';
 
 
--- check contrainnts
+-- Test pour verifier que les checks contrainnts
 INSERT INTO Achats Values (4,'011A',to_date('02-12-2015','DD-MM-YYYY'));
 INSERT INTO Achats Values (4,'011A',to_date('02-12-2003','DD-MM-YYYY'));
 INSERT INTO AVIS Values (6,'03AA',22,NULL);
