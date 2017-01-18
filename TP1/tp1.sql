@@ -34,7 +34,7 @@ CREATE TABLE Avis(
   PRIMARY KEY(idcl,refl)
 );
 
--- Les requets pour remplir les tableaux qu'on a cré avants
+-- Les requets pour remplir les tableaux qu'on a crée avant
 
 INSERT INTO Clients Values (1,'toto','titi','Mars','123456789123');
 INSERT INTO Clients Values (2,'tata','tete','Jupiter','234567891231');
@@ -76,15 +76,19 @@ INSERT INTO AVIS Values (5,'03B3',16.5,NULL);
 INSERT INTO AVIS Values (6,'03AA',17,NULL);
 
 -- Suppression
+--
 DELETE FROM Clients where idcl = 7;
+--
 -- Ca donne l'erreur sur l'integralité de bdd; car idcl = 6 est present dans tableau Achats et Avis 
 -- Si on voulait supprimer idcl = 6, pour ca il faut d'abord supprimer les lignes qui correspond à idcl = 6 dans les tableaux achats et avis
 DELETE FROM Clients where idcl = 6; 
+--
 DELETE FROM Avis where idcl = 6;
+--
 DELETE FROM Achats where idcl = 1 and refl = '02A3';
+--
 
-
--- Test pour verifier que les checks contrainnts
+-- Test pour verifier que les checks contraints fonctionnent
 INSERT INTO Achats Values (4,'011A',to_date('02-12-2015','DD-MM-YYYY'));
 INSERT INTO Achats Values (4,'011A',to_date('02-12-2003','DD-MM-YYYY'));
 INSERT INTO AVIS Values (6,'03AA',22,NULL);
@@ -110,7 +114,7 @@ INSERT INTO AVIS Values (6,'03AA',0,NULL);
 --    FROM ( Clients c right outer join Avis a on c.idcl=a.idcl ) join Livres l on l.refl= a.refl
 --    WHERE Avis.commentaire = NULL
  
--- Requets SQL formal SQL Command
+-- Requets SQL formal SQL plus
 -- 1.   
 Select titre,auteur,genre From Livres natural join Achats Group BY titre,auteur,genre having count(*)> 2;
 
