@@ -1,3 +1,5 @@
+-- TP 1 de Bases de données réalisé par
+-- PHALAVANDISHVILI Demetre & JAMET Felix
 -- Q1 
 -- Les tables Achats et Avis possedent des clés etrangeres qui se trouvent dans les tables Livre et Clients, pour supprimer les tables on doit respecter l'ordre de suppression; c'est-à-dire on doit d'abors supprimer les tables qui contiennent les clés etrangeres et puis les tables qui n'ont pas les clés etrangeres
 DROP TABLE Achats;
@@ -51,8 +53,8 @@ INSERT INTO Livres Values ('011A','C','Dennis Ritchie','Programmation');
 INSERT INTO Livres Values ('011B','C++','Bjarne Stroustrup', 'Programmation');
 INSERT INTO Livres Values ('02A3','ISETL','Jacob Schwartz','Langue morte');
 INSERT INTO Livres Values ('03AA','Prolog','mr.logique','Programmation');
-INSERT INTO Livres Values ('03A3','OCaml','Xavier Leroy','Prog Fonctionnelle');
-INSERT INTO Livres Values ('03B3','HASKELL','Commun Has','Prog Fonctionnelle');
+INSERT INTO Livres Values ('03A3','OCaml','Xavier Leroy','Prog Fonction');
+INSERT INTO Livres Values ('03B3','HASKELL','Commun Has','Prog Fonction');
 
 INSERT INTO Achats Values (1,'011A',to_date('01-01-2009','DD-MM-YYYY'));
 INSERT INTO Achats Values (2,'011A',to_date('02-01-2009','DD-MM-YYYY'));
