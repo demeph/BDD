@@ -1,3 +1,5 @@
+-- Q1 
+-- Les tables Achats et Avis possedent des clés etrangeres qui se trouvent dans les tables Livre et Clients, pour supprimer les tables on doit respecter l'ordre de suppression; c'est-à-dire on doit d'abors supprimer les tables qui contiennent les clés etrangeres et puis les tables qui n'ont pas les clés etrangeres
 DROP TABLE Achats;
 DROP TABLE Avis;
 DROP TABLE Clients;
@@ -34,7 +36,7 @@ CREATE TABLE Avis(
   PRIMARY KEY(idcl,refl)
 );
 
--- Les requets pour remplir les tableaux qu'on a crée avant
+-- Les requetes pour remplir les tableaux créés auparavant
 
 INSERT INTO Clients Values (1,'toto','titi','Mars','123456789123');
 INSERT INTO Clients Values (2,'tata','tete','Jupiter','234567891231');
@@ -49,8 +51,8 @@ INSERT INTO Livres Values ('011A','C','Dennis Ritchie','Programmation');
 INSERT INTO Livres Values ('011B','C++','Bjarne Stroustrup', 'Programmation');
 INSERT INTO Livres Values ('02A3','ISETL','Jacob Schwartz','Langue morte');
 INSERT INTO Livres Values ('03AA','Prolog','mr.logique','Programmation');
-INSERT INTO Livres Values ('03A3','OCaml','Xavier Leroy','Fonctionnelle');
-INSERT INTO Livres Values ('03B3','HASKELL','Commun Has','Fonctionnelle');
+INSERT INTO Livres Values ('03A3','OCaml','Xavier Leroy','Prog Fonctionnelle');
+INSERT INTO Livres Values ('03B3','HASKELL','Commun Has','Prog Fonctionnelle');
 
 INSERT INTO Achats Values (1,'011A',to_date('01-01-2009','DD-MM-YYYY'));
 INSERT INTO Achats Values (2,'011A',to_date('02-01-2009','DD-MM-YYYY'));
@@ -79,8 +81,8 @@ INSERT INTO AVIS Values (6,'03AA',17,NULL);
 --
 DELETE FROM Clients where idcl = 7;
 --
--- Ca donne l'erreur sur l'integralité de bdd; car idcl = 6 est present dans tableau Achats et Avis 
--- Si on voulait supprimer idcl = 6, pour ca il faut d'abord supprimer les lignes qui correspond à idcl = 6 dans les tableaux achats et avis
+-- Ca donne une erreur sur l'integralité de bdd; car idcl = 6 est present dans tableau Achats et Avis 
+-- Si on voulait supprimer idcl = 6, pour ca il faut d'abord supprimer les lignes qui correspondent à idcl = 6 dans les tableaux achats et avis
 DELETE FROM Clients where idcl = 6; 
 --
 DELETE FROM Avis where idcl = 6;
@@ -88,20 +90,29 @@ DELETE FROM Avis where idcl = 6;
 DELETE FROM Achats where idcl = 1 and refl = '02A3';
 --
 
--- Test pour verifier que les checks contraints fonctionnent
+-- Test pour vérifier que les checks contraints fonctionnent
 INSERT INTO Achats Values (4,'011A',to_date('02-12-2015','DD-MM-YYYY'));
 INSERT INTO Achats Values (4,'011A',to_date('02-12-2003','DD-MM-YYYY'));
 INSERT INTO AVIS Values (6,'03AA',22,NULL);
 INSERT INTO AVIS Values (6,'03AA',0,NULL);
 
+-- Pour chaque commande, sqlplus affiche les erreurs de violation des contraintes definies plus haut
+
+-- Q2
 
 -- Requets SQL format lisible
 --    1.
+--  Commande qui correspond a la question Q1
+--    SELECT titre,auteur,genre
+--    FROM Livres natural join Achats
+--    GROUP BY refl
+--    having count(*) >= 10000
+
+-- Mais pour avoir la possibilité de tester on utilise la commande suivante: 
 --    SELECT titre,auteur,genre
 --    FROM Livres natural join Achats
 --    GROUP BY refl
 --    having count(*) >= 2
---    ORDER BY ASC
 
 --    2. 
 --    Select titre,auteur,genre
@@ -114,7 +125,7 @@ INSERT INTO AVIS Values (6,'03AA',0,NULL);
 --    FROM ( Clients c right outer join Avis a on c.idcl=a.idcl ) join Livres l on l.refl= a.refl
 --    WHERE Avis.commentaire = NULL
  
--- Requets SQL formal SQL plus
+-- Requêtes SQL formal SQL plus
 -- 1.   
 Select titre,auteur,genre From Livres natural join Achats Group BY titre,auteur,genre having count(*)> 2;
 
