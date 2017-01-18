@@ -18,7 +18,7 @@ CREATE TABLE Livres(
   auteur varchar2(20),
   genre varchar2(15)
 );
-    
+
 CREATE TABLE Achats(
   idcl number REFERENCES Clients,
   refl varchar2(10) REFERENCES Livres,
@@ -33,6 +33,8 @@ CREATE TABLE Avis(
   commentaire varchar2(50),
   PRIMARY KEY(idcl,refl)
 );
+
+-- Les requets pour remplir les tableaux qu'on a cré avants
 
 INSERT INTO Clients Values (1,'toto','titi','Mars','123456789123');
 INSERT INTO Clients Values (2,'tata','tete','Jupiter','234567891231');
@@ -76,7 +78,7 @@ INSERT INTO AVIS Values (6,'03AA',17,NULL);
 -- Suppression
 DELETE FROM Clients where idcl = 7;
 -- Ca donne l'erreur sur l'integralité de bdd; car idcl = 6 est present dans tableau Achats et Avis 
--- Si on voulait supprimer iccl = 6, pour ca il faut d'abord supprimer les lignes qui correspond à idcl = 6 dans les tableaux achats et avis
+-- Si on voulait supprimer idcl = 6, pour ca il faut d'abord supprimer les lignes qui correspond à idcl = 6 dans les tableaux achats et avis
 DELETE FROM Clients where idcl = 6; 
 DELETE FROM Avis where idcl = 6;
 DELETE FROM Achats where idcl = 1 and refl = '02A3';
