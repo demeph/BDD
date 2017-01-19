@@ -20,15 +20,15 @@ CREATE TABLE Livres(
 );
 
 CREATE TABLE Achats(
-  idcl number REFERENCES Clients,
-  refl varchar2(10) REFERENCES Livres,
+  idcl number REFERENCES Clients ON DELETE CASCADE,
+  refl varchar2(10) REFERENCES Livres ON DELETE CASCADE,
   dateachat date CHECK (dateachat BETWEEN to_date('01-01-2008','DD-MM-YYYY') and to_date('31-12-2013','DD-MM-YYYY') ),
   PRIMARY KEY(idcl,refl,dateachat)
 );
     
 CREATE TABLE Avis(
-  idcl number REFERENCES Clients,
-  refl varchar2(10) REFERENCES LIVRES,
+  idcl number REFERENCES Clients ON DELETE CASCADE,
+  refl varchar2(10) REFERENCES LIVRES ON DELETE CASCADE,
   note number(4,2) CHECK (note >= 1 and note <= 20),
   commentaire varchar2(50),
   PRIMARY KEY(idcl,refl)
