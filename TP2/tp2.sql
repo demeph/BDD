@@ -34,7 +34,8 @@ CREATE TABLE Avis(
   PRIMARY KEY(idcl,refl)
 );
 
-CREATE SEQUENCE maSequence START WITH 1 INCREMENT BY 1 ;
+Drop SEQUENCE maSequence;
+CREATE SEQUENCE maSequence START WITH 0 INCREMENT BY 1 MINVALUE 0 ;
 
 -- Les requetes pour remplir les tableaux créés auparavant
 
