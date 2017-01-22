@@ -1,0 +1,41 @@
+Dim. Janv. 22                                                          page    1
+                     Achats des clients au 28 janvier 2013
+
+IDCL DATEACHAT            GENRE                   prix                          
+---- -------------------- -------------------- -------                          
+   1 01/01/09             Programmation          18.99                          
+     02/12/09             Langue morte           27.99                          
+     23/11/12             Programmation          15.99                          
+****                                           -------                          
+avg                                              20.99                          
+sum                                              62.97                          
+                                                                                
+   2 02/01/09             Programmation          18.99                          
+     21/12/11             Programmation          15.99                          
+****                                           -------                          
+avg                                              17.49                          
+sum                                              34.98                          
+                                                                                
+   3 02/05/11             Prog Fonction          23.99                          
+     02/12/11             Programmation          18.99                          
+     22/04/12             Programmation          15.99                          
+****                                           -------                          
+avg                                              19.66                          
+sum                                              58.97                          
+                                                                                
+   4 02/09/09             Programmation          15.99                          
+****                                           -------                          
+avg                                              15.99                          
+sum                                              15.99                          
+                                                                                
+   5 02/11/12             Prog Fonction          21.99                          
+****                                           -------                          
+avg                                              21.99                          
+sum                                              21.99                          
+                                                                                
+   6 02/12/10             Programmation          22.99                          
+****                                           -------                          
+avg                                              22.99                          
+sum                                              22.99                          
+                                                                                
+select c.idcl,dateachat,genre,a.prix from (clients c left outer join Achats a on

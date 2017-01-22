@@ -1,14 +1,7 @@
-SET ECHO OFF
-SPOOL poubelle.sql
-SET ECHO OFF
-SET FEEDBACK OFF
-SET HEADING OFF
-SET PAGESIZE 0
-
-SELECT 'DELETE FROM ' || table_name || ' CASCADE;' FROM USER_TABLES ;
-
-SPOOL OFF
---SET ECHO ON
-SET PAGESIZE 500
-SET FEEDBACK ON
-SET HEADING ON
+SQL> SET ECHO OFF
+SQL> SET FEEDBACK OFF
+SQL> SET HEADING OFF
+SQL> SET PAGESIZE 0
+SQL> <placer ici la requˆte de la question Q1.>
+SP2-0734: unknown command beginning "<placer ic..." - rest of line ignored.
+SQL> SPOOL OFF
