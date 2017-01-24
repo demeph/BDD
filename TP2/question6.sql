@@ -1,3 +1,4 @@
+SET ECHO OFF
 rem Bookshelf activty report
 
 set headsep !
