@@ -1,3 +1,4 @@
+--JAMET Felix - PHALAVANDISHVILI Demetre - Groupe 601B
 SET ECHO OFF
 SPOOL acheteurs2011.sql
 SET ECHO OFF
