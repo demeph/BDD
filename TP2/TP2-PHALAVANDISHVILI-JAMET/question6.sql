@@ -6,14 +6,10 @@ ttitle 'Achats des clients au 28 janvier 2013'
 
 --definit la colonne des identifiant de client de type entier
 column idcl format 999
--- definit la colonne pour la date achat de chaque livre de type date
-column DateAchat format a9
--- defnit la colonne pour la genre d'un livre de type chaine de caractère de longueur 15
-column Genre format a15
 -- definit la colonne pour la prix d'un livre  d'un type numbre(4,2)
 column prix format 99.99
 
--- permet d'afficher la moyenne et la somme juste avant qu'on change idcl
+-- rajouter une ligne vide avant une valeur diffèrent de idcl
 break on idcl skip 1 on report
 -- Permet de calculer la somme et la moyenne des achats que chaque client a réalisé
 compute avg sum of prix on idcl

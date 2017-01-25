@@ -2,15 +2,28 @@
 
 # TP2 Reporting SQL PLUS
 
+# Introduction
+
+​	Tous les scripts utilisés pour réaliser ce TP se trouvent dans le fichier *tp2.sql*, mais on peut également les consulter dans les fichiers identifiés suivant le numéro de question.
+
 ## Q 1
 
-​	Pour créer une sequence, on ajoute la commande suivante dans notre script. Comme on nous l'a expliqué lors du TP, pour pouvoir réellement commencer à 1, nous avons utilisé ```sql START WITH 0``` et ```sql MINVALUE 0```:
+​	Pour créer une sequence, on ajoute la commande suivante dans notre script. Comme on nous l'a expliqué lors du TP, pour pouvoir réellement commencer à 1,
+
+ nous avons utilisé ``` START WITH 0``` et ```MINVALUE 0```:
 
 ````sql
 CREATE SEQUENCE idcl_sequence START WITH 0 INCREMENT BY 1 MINVALUE 0 ;
 ````
 
-	on utilise par la suite ```sql idcl_sequence.nextval``` lors de l'insertion de nouvelles valeurs dans la table :
+on utilise par la suite 
+
+```sql
+idcl_sequence.nextval
+```
+
+lors de l'insertion de nouvelles valeurs dans la table :
+
 
 ````sql
 INSERT INTO Clients Values (idcl_sequence.nextval,'toto','titi','Mars','123456789123');
@@ -22,11 +35,13 @@ INSERT INTO Clients Values (idcl_sequence.nextval,'Dr. Watson','John','221b Bake
 INSERT INTO Clients Values (idcl_sequence.nextval,'Pr. Moriarty','Jim',NULL,NULL);
 ````
 
-	Toutes ces instructions se trouvent dans le fichier *tp2.sql* entre les lignes 38-50.
+Toutes ces instructions se trouvent dans le fichier *tp2.sql* entre les lignes 38-50.
+
 
 ## Q 2
 
-	On nous a demandé de tester la requête suivante :
+On nous a demandé de tester la requête suivante :
+
 
 ````sql
 SELECT  'DELETE FROM ' || table_name || ';' FROM user_tables;
@@ -132,7 +147,7 @@ update achats set prix = '22,99' where refl = '03AA';
 update achats set prix = '27,99' where refl = '02A3';
 ````
 
-Dans le fichier *tp2.sql* on peut trouver ces instructions entre les lignes 83-2
+Dans le fichier *tp2.sql* on peut trouver ces instructions entre les lignes 153-163.
 
 ## Q 6
 
@@ -179,4 +194,5 @@ select idcl,dateachat,genre,prix from Achats natural join livres where dateachat
 spool off
 ```
 
-	Le script se trouve dans le fichier *question6.sql*
+Le script se trouve dans le fichier *question6.sql*.
+

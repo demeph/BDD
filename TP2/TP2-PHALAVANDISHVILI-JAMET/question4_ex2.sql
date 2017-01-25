@@ -1,6 +1,6 @@
 --JAMET Felix - PHALAVANDISHVILI Demetre - Groupe 601B
 SET ECHO OFF
-SPOOL acheteurs2011.sql
+SPOOL acheteurs2011.lst
 SET ECHO OFF
 SET FEEDBACK OFF
 SET HEADING OFF
@@ -10,6 +10,6 @@ SELECT nom,pren,tel || ';' FROM Achats a left outer join clients c on a.idcl=c.i
 
 SPOOL OFF
 --SET ECHO ON
-+SET PAGESIZE 500
+SET PAGESIZE 500
 SET FEEDBACK ON
-+SET HEADING ON
+SET HEADING ON

@@ -79,6 +79,76 @@ INSERT INTO AVIS Values (4,'011B',19,NULL);
 INSERT INTO AVIS Values (5,'03B3',16.5,NULL);
 INSERT INTO AVIS Values (6,'03AA',17,NULL);
 
+-- Question 2
+
+SELECT  'DELETE FROM ' || table_name || ';' FROM user_tables;
+
+-- Resultat de la commande 
+/*  
+  DELETE FROM CLIENTS;
+  DELETE FROM LIVRES;
+  DELETE FROM ACHATS;
+  DELETE FROM AVIS; 
+*/
+
+-- Question 3
+
+SET ECHO OFF
+SPOOL effacer.sql
+SET ECHO OFF
+SET FEEDBACK OFF
+SET HEADING OFF
+SET PAGESIZE 0
+
+SELECT 'DELETE FROM ' || table_name || ';' FROM USER_TABLES ;
+
+SPOOL OFF
+--SET ECHO ON
+SET PAGESIZE 500
+SET FEEDBACK ON
+SET HEADING ON
+
+-- Resultat de cette commande est dans le fichier effacer.sql
+
+-- Question 4 
+--Exemple 1
+--JAMET Felix - PHALAVANDISHVILI Demetre - Groupe 601B
+SET ECHO OFF
+SPOOL do_dropall.sql
+SET ECHO OFF
+SET FEEDBACK OFF
+SET HEADING OFF
+SET PAGESIZE 0
+
+SELECT 'DROP TABLE ' || table_name || ' CASCADE CONSTRAINTS;' FROM USER_TABLES ;
+
+SPOOL OFF
+--SET ECHO ON
+SET PAGESIZE 500
+SET FEEDBACK ON
+SET HEADING ON
+
+-- Resultat de cette commande est dans le fichier do_dropall.sql
+
+-- Exemple 2
+
+--JAMET Felix - PHALAVANDISHVILI Demetre - Groupe 601B
+SET ECHO OFF
+SPOOL acheteurs2011.lst
+SET ECHO OFF
+SET FEEDBACK OFF
+SET HEADING OFF
+SET PAGESIZE 0
+
+SELECT nom,pren,tel || ';' FROM Achats a left outer join clients c on a.idcl=c.idcl where a.dateachat >= to_date('01-01-2011','DD-MM-YYYY') and a.dateachat <= to_date('31-12-2011','DD-MM-YYYY')  group by nom,pren,tel;
+
+SPOOL OFF
+--SET ECHO ON
+SET PAGESIZE 500
+SET FEEDBACK ON
+SET HEADING ON
+
+-- Resultat se trouve dans le fichier acheteurs2011.lst
 
 -- Question 5
 
@@ -90,3 +160,41 @@ update achats set prix = '23,99' where refl = '03A3';
 update achats set prix = '21,99' where refl = '03B3';
 update achats set prix = '22,99' where refl = '03AA';
 update achats set prix = '27,99' where refl = '02A3';
+
+-- question 6 
+
+set headsep !
+
+-- Permet de definir le titre du rapport
+ttitle 'Achats des clients au 28 janvier 2013'
+
+--definit la colonne des identifiant de client de type entier
+column idcl format 999
+-- definit la colonne pour la prix d'un livre  d'un type numbre(4,2)
+column prix format 99.99
+
+-- permet d'afficher la moyenne et la somme juste avant qu'on change idcl
+break on idcl skip 1 on report
+-- Permet de calculer la somme et la moyenne des achats que chaque client a réalisé
+compute avg sum of prix on idcl
+
+set linesize 80
+set pagesize 41
+set newpage 0
+set feedback OFF
+
+SET ECHO OFF
+
+--ecrit le resultat dans le fichier
+spool 2013-01-28-achats.lst
+
+--requete qui permet d'avoir le resultat souhaité
+select idcl,dateachat,genre,prix from Achats natural join livres where dateachat <= to_date('28-01-2013','DD-MM-YYYY') order by idcl,dateAchat asc;
+
+--requete sql lisible
+--select idcl,dateachat,genre,prix 
+--from Achats natural join livres 
+--where dateachat <= to_date('28-01-2013','DD-MM-YYYY') 
+--order by idcl,dateAchat asc;
+
+spool off
