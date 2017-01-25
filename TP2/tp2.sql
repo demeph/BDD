@@ -35,18 +35,19 @@ CREATE TABLE Avis(
   PRIMARY KEY(idcl,refl)
 );
 
-Drop SEQUENCE maSequence;
-CREATE SEQUENCE maSequence START WITH 0 INCREMENT BY 1 MINVALUE 0 ;
+--Question 1:
+Drop SEQUENCE idcl_sequence;
+CREATE SEQUENCE idcl_sequence START WITH 0 INCREMENT BY 1 MINVALUE 0 ;
 
 -- Les requetes pour remplir les tableaux créés auparavant
 
-INSERT INTO Clients Values (maSequence.nextval,'toto','titi','Mars','123456789123');
-INSERT INTO Clients Values (maSequence.nextval,'tata','tete','Jupiter','234567891231');
-INSERT INTO Clients Values (maSequence.nextval,'Potter','Harry','Poudlard','345678912312');
-INSERT INTO Clients Values (maSequence.nextval,'Elessar', 'telcontar', 'fennas druinin', '456789123123');
-INSERT INTO Clients Values (maSequence.nextval,'Holmes','Sherlock','221b Baker str','567891231234');
-INSERT INTO Clients Values (maSequence.nextval,'Dr. Watson','John','221b Baker str','678912312345');
-INSERT INTO Clients Values (maSequence.nextval,'Pr. Moriarty','Jim',NULL,NULL);
+INSERT INTO Clients Values (idcl_sequence.nextval,'toto','titi','Mars','123456789123');
+INSERT INTO Clients Values (idcl_sequence.nextval,'tata','tete','Jupiter','234567891231');
+INSERT INTO Clients Values (idcl_sequence.nextval,'Potter','Harry','Poudlard','345678912312');
+INSERT INTO Clients Values (idcl_sequence.nextval,'Elessar', 'telcontar', 'fennas druinin', '456789123123');
+INSERT INTO Clients Values (idcl_sequence.nextval,'Holmes','Sherlock','221b Baker str','567891231234');
+INSERT INTO Clients Values (idcl_sequence.nextval,'Dr. Watson','John','221b Baker str','678912312345');
+INSERT INTO Clients Values (idcl_sequence.nextval,'Pr. Moriarty','Jim',NULL,NULL);
 
 
 INSERT INTO Livres Values ('011A','C','Dennis Ritchie','Programmation');
