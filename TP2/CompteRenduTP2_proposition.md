@@ -90,15 +90,13 @@ SET FEEDBACK ON
 SET HEADING ON
 ```
 
-​	Ce script permet de supprimer toutes les tables présentes dans notre base de données.
-
-​	Pour executer ce script, il faut executer le fichier *question4_ex1.sql*, et puis *Drop_Table.sql*.
+​	Ce script permet de supprimer toutes les tables présentes dans notre base de données. Il se trouve dans le fichier *question4_ex1.sql*.
 
 - Exemple 2
 
 ```sql
 SET ECHO OFF
-SPOOL acheteurs2011.sql
+SPOOL acheteurs2011.lst
 SET ECHO OFF
 SET FEEDBACK OFF
 SET HEADING OFF
@@ -113,13 +111,11 @@ SET FEEDBACK ON
 +SET HEADING ON
 ```
 
-​	Ce script permet d'avoir dans le fichier *acheteurs2012.sql* tous les clients (nom, prenom,tel) de chaque client qui ont acheté la(les) livre(s) durant l'année 2011.
-
-​	Ce script peut être executé en utilisant le fichier *question4_ex2*. et puis *acheteurs2011.sql*.
+​	Ce script permet d'avoir dans le fichier *acheteurs2012.lst* tous les clients (nom, prenom,tel) de chaque client ayant acheté au moins un livre durant l'année 2011. Il est contenu dans le fichier *question4_ex2*.
 
 ## Q 5
 
-​	Pour ajouter un nouvelle colonne a la rélation achats on utilise la commande suivante :
+​	Pour ajouter une nouvelle colonne dans la table achats, on utilise la commande suivante :
 
 ````sql
 alter table achats add prix number(4,2);
@@ -140,7 +136,7 @@ Dans le fichier *tp2.sql* on peut trouver ces instructions entre les lignes 83-2
 
 ## Q 6
 
-​	Dans cette question il fallait fair le rapport de la moyenne et  la somme des prix par client. Avant de faire le rapport , on a d'abord ecrit la requête sql qui correspond a la demande. La requete est suivant :
+​	Voici la requête utilisée pour selectionner les clients ayant effectué un achat avant le 28 janvier 2013.
 
 ```mysql
 SELECT idcl,dateachat,genre,prix 
@@ -149,7 +145,7 @@ WHERE dateachat <= to_date('28-01-2013','DD-MM-YYYY')
 ORDER BY idcl,dateAchat ASC;
 ```
 
-​	Puis on a ecrit le script suivante qui permet d'avoir le rapport demandé :
+​	On utilise cette requête dans le script suivant afin de générer le rapport demandé :
 
 ```sql
 set headsep !
@@ -157,16 +153,12 @@ set headsep !
 -- Permet de definir le titre du rapport
 ttitle 'Achats des clients au 28 janvier 2013'
 
---definit la colonne des identifiant de client de type entier
+--définit la colonne des identifiant de client de type entier
 column idcl format 999
--- definit la colonne pour la date achat de chaque livre de type date
-column DateAchat format a9
--- defnit la colonne pour la genre d'un livre de type chaine de caractère de longueur 15
-column Genre format a15
--- definit la colonne pour la prix d'un livre  d'un type numbre(4,2)
+-- définit la colonne pour le prix d'un livre  d'un type nombre(4,2)
 column prix format 99.99
 
--- permet d'afficher la moyenne et la somme juste avant qu'on change idcl
+-- Permet d'ajouter avant une valeur différente d'idcl
 break on idcl skip 1 on report
 -- Permet de calculer la somme et la moyenne des achats que chaque client a réalisé
 compute avg sum of prix on idcl
@@ -178,12 +170,13 @@ set feedback OFF
 
 SET ECHO OFF
 
---ecrit le resultat dans le fichier
+--Écrit le resultat dans le fichier
 spool 2013-01-28-achats.lst
 
---requete qui permet d'avoir le resultat souhaité
+--Requête qui permet d'avoir le résultat souhaité
 select idcl,dateachat,genre,prix from Achats natural join livres where dateachat <= to_date('28-01-2013','DD-MM-YYYY') order by idcl,dateAchat asc;
 
 spool off
 ```
 
+	Le script se trouve dans le fichier *question6.sql*
