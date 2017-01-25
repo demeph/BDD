@@ -2,7 +2,7 @@
 
 # TP2 Reporting SQL PLUS
 
-## Q 1
+### Q 1
 
 ​	Pour utiliser une sequence qu'on ajout la commande permettant créer la sequence, dans le script qui permet creer lesrelations de notre base des données:
 
@@ -30,7 +30,7 @@ INSERT INTO Clients Values (maSequence.nextval,'Pr. Moriarty','Jim',NULL,NULL);
 
 Tout ces instructions se trouve dans le fichiers *tp2.sql* entre les lignes 38-48.
 
-## Q 2
+### Q 2
 
 On etait commandé d'implementer la commande suivante 
 
@@ -51,7 +51,7 @@ DELETE FROM AVIS;
 
 ​	
 
-## Q 3
+### Q 3
 
 ​	Pour mieux utilier la commande décrit en question 2, on utilise le scrit suivant en ajoutant la commande denière :
 
@@ -77,7 +77,7 @@ SET HEADING ON
 
 ​	Ce script se trouve dans le fichier *question3.sql*, puis *effacer.sql*.
 
-## Q 4
+### Q 4
 
 ​	On propose les exemples suivant:
 
@@ -127,7 +127,7 @@ SET FEEDBACK ON
 
 ​	Ce script peut être executé en utilisant le fichier *question4_ex2*. et puis *acheteurs2011.sql*.
 
-## Q 5
+### Q 5
 
 ​	Pour ajouter un nouvelle colonne a la rélation achats on utilise la commande suivante :
 
@@ -146,9 +146,9 @@ update achats set prix = '22,99' where refl = '03AA';
 update achats set prix = '27,99' where refl = '02A3';
 ````
 
-Dans le fichier *tp2.sql* on peut trouver ces instructions entre les lignes 83-2
+Dans le fichier *tp2.sql* on peut trouver ces instructions entre les lignes 83-92
 
-## Q 6
+### Q 6
 
 ​	Dans cette question il fallait fair le rapport de la moyenne et  la somme des prix par client. Avant de faire le rapport , on a d'abord ecrit la requête sql qui correspond a la demande. La requete est suivant :
 
@@ -197,3 +197,4 @@ select idcl,dateachat,genre,prix from Achats natural join livres where dateachat
 spool off
 ```
 
+​	Ce script peut etre executer en utilisant le fichier *question6.sql*, le resultat sera enregistrer dans le fichier *2013-01-28-achats.lst*.
