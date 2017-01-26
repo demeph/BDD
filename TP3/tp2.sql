@@ -85,9 +85,9 @@ INSERT INTO AVIS Values (6,'03AA',17,NULL);
 
 alter table achats add prix number(4,2);
 
-update achats set prix = '18,99' where refl = '011A';
-update achats set prix = '15,99' where refl = '011B';
-update achats set prix = '23,99' where refl = '03A3';
-update achats set prix = '21,99' where refl = '03B3';
-update achats set prix = '22,99' where refl = '03AA';
-update achats set prix = '27,99' where refl = '02A3';
+update achats set prix = 18.99 where refl = '011A';
+update achats set prix = 15.99 where refl = '011B';
+update achats set prix = 23.99 where refl = '03A3';
+update achats set prix = 21.99 where refl = '03B3';
+update achats set prix = 22.99 where refl = '03AA';
+update achats set prix = 27.99 where refl = '02A3';

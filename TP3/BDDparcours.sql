@@ -7,18 +7,18 @@ create table parcours (
 
 create table compo_parcours(
 	idp varchar2(10) REFERENCES parcours on delete cascade,
-	id_evt varchar2(10) REFERENCES inscrip_evt on delete cascade,
+	id_evt varchar2(10),
 	primary key(idp,id_evt)
 );
 
 create table inscrip_parcours(
-	idcl number,
+	idcl number references clients on delete cascade,
 	idp varchar2(10) REFERENCES parcours on delete cascade,
 	primary key(idcl,idp)
 );
 
 create table inscrip_evt(
-	idcl number,
+	idcl number references clients on delete cascade,
 	idp varchar2(10) REFERENCES parcours on delete cascade,
 	id_evt varchar2(10),
 	primary key(idcl,idp,id_evt)
