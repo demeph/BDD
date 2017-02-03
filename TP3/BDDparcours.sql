@@ -1,3 +1,8 @@
+DROP table inscrip_parcours;
+DROP table inscrip_evt;
+DROP table compo_parcours;
+DROP table parcours;
+
 create table parcours (
 	idp varchar2(10) primary key,
 	intitulep varchar2(15),
