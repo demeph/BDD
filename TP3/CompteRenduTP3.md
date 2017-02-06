@@ -23,13 +23,13 @@ END;
 
 #### b)
 
-​	Pour recupere tous les references des livres qu'on possede dans notre base de données on utilise cursor (curseur) qui permet de parcourir et recuperer une à une les lignes du résultat de notre requête suivant:
+​	Pour récupérer toutes les références des livres que l'on possède dans notre base de données, on utilise un curseur nous permettantde parcourir et de récupérer une à une les lignes du résultat de la requête suivante:
 
-````plsql
+```plsql
 cursor lesrefls is select refl from livres;
-````
+```
 
-​	Puis en utilisant le boucle *for* on parcours les references en calculant la moyenne pour chaque livre
+​	Puis, en utilisant une boucle *for*, on parcours les références en calculant la moyenne pour chaque livre
 
 ```plsql
 DECLARE	
@@ -65,7 +65,7 @@ END;
 
 ### Q2
 
-````plsql
+```plsql
 SET SERVEROUTPUT ON
 CREATE OR REPLACE TRIGGER maj_note_moy
 AFTER INSERT OR UPDATE on avis
@@ -81,32 +81,32 @@ BEGIN
 	end if;
 END;
 /
-````
+```
 
-​	On écrit le trigger suivant qui s'applique après l'ajout ou a la modification  d'un relation avis pour chaque ligne. Le but c'est de modifier dynamiquement le note moyenne de livre pour chaque avis exprimé. Mais en lancant la requete suivante :
+​	On écrit le trigger suivant qui s'applique après l'ajout ou la modification d'un avis. Le but est de modifier dynamiquement la note moyenne de livre pour chaque avis exprimé. Mais on obtient une erreur en lançant la requête suivante :
 
 ```plsql
 INSERT INTO AVIS Values (6,'03B3',16.5,NULL);
 ```
 
-cette trigger donne l'erreur suivant :
+    Voici l'erreur obtenur :
 
-````plsql
+```plsql
 ERROR at line 1:
 ORA-04091: table DEMNA.AVIS is mutating, trigger/function may not see it
 ORA-06512: at "DEMNA.MAJ_NOTE_MOY", line 5
 ORA-04088: error during execution of trigger 'DEMNA.MAJ_NOTE_MOY'
-````
+```
 
-​	Oracle nous empeche d'utiliser les données qu'on veux ajouter dans notre bdd, parce que la requete par laquelle on modifie ou ajoute ladonnée peuvent echoué, comme ça on garantie l'integrité de la base des données.  
+​	Le SGBD nous empêche d'utiliser les données qu'on veux ajouter dans notre bdd, parce que la requete par laquelle on modifie ou ajoute ladonnée peuvent echoué, comme ça on garantie l'integrité de la base des données.  //j'avoue pas comprendre. j'ai moitié oublié ce que isabelle avait expliqué pendant le TP
 
-​	Pour eviter cette erreur, on ajoute la ligne suivante :
+​	Pour éviter cette erreur, on ajoute la ligne suivante :
 
 ```plsql
 DROP TRIGGER maj_note_moy;
 ```
 
-## Coherence Avis-Achat
+## Cohérence Avis-Achat
 
 ### Q1
 
@@ -139,5 +139,5 @@ DROP TRIGGER coherenceAA;
 
 
 
-## Traitement d'une inscription à une parcours
+## Traitement d'une inscription à un parcours
 
