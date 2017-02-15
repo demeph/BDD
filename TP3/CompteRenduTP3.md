@@ -1,4 +1,4 @@
-*PHALAVANDISHVILI Demetre - JAMET Felix*
+*PHALAVANDISHVILI Demetre - JAMET Felix - Groupe 601B*
 
 # TP3 PL/SQL
 
@@ -9,7 +9,7 @@
 #### a)
 Pour ajouter la nouvelle colonne dans la relation *Livres*, on utilise la commande suivante :
 ```plsql
-Alter table Livres add note_moy(4,2)
+Alter table Livres add note_moy(4,2);
 ```
 
 ```plsql
@@ -93,7 +93,8 @@ END;
 INSERT INTO AVIS Values (6,'03B3',16.5,NULL);
 ```
 
-    Voici l'erreur obtenur :
+Voici l'erreur obtenue :
+
 
 ```plsql
 ERROR at line 1:
@@ -127,17 +128,19 @@ BEGIN
 		select count(*) into nb
 		from avis a left outer join achats b on a.idcl = b.idcl and a.refl = b.refl
 		where a.idcl = :new.idcl and a.refl = :new.refl;
-		if nb is null then 
+		if nb = 0 then 
 			raise acheter_Liv;
 		END if;
 	end if;
 exception
 	when acheter_Liv then
-		DBMS_OUTPUT.PUT_LINE('Vous devez acheter un livre avant donner un avis');
+		raise_application_error(-20010,'Vous devez acheter un livre avant donner un avis');
 END;
 /
 DROP TRIGGER coherenceAA;
 ```
+
+​	Ici on verifie bien que le client qui veut mettre la commentaire a bien acheter le livre en utilisant jointure externe a gauche; pour obtenier juste le nombre de tuplet existant dans le relation *achats*. S'il n'existe pas on leve un erreur d'application.
 
  ### Q2
 
@@ -149,7 +152,7 @@ CREATE OR REPLACE PROCEDURE modifNoteCom(idc in number,refe in varchar2) IS
 	pas_droit exception;
 BEGIN
    Select count(*) into nbLigne from avis where idcl = idc and refl = refe;
-   if nbLigne is null then
+   if nbLigne = 0 then
    	raise pas_droit;
   	else
 		if eval is not null then
@@ -166,7 +169,7 @@ END;
 /
 ```
 
-Ici le but de cette procédure est de vérifier que l'utilisateur modifie bien son avis sur un livre. Dans la procédure, quand le client modifie la note attribuée ou le commentaire, s'il laisse vide les champs de la note ou le commentaire dans la base de données, ces valeurs vont conserver leur état initial. Avant de lancer la requête *update*, on vérifie que les valeurs de *idcl* et *refl* passées en paramètre correspondent bien à un tuple existant. On lève une exception si ça n'est pas le cas.
+Ici le but de cette procédure est de vérifier que l'utilisateur modifie bien son avis sur un livre. Dans la procédure, quand le client modifie la note attribuée ou le commentaire, s'il laisse vide les champs de la note ou le commentaire dans la base de données, ces valeurs vont conserver leur état initial. Avant de lancer la requête *update*, on vérifie que les valeurs de *idcl* et *refl* passées en paramètre correspondent bien à un tuple existant. On lève un erreur d'application si ça n'est pas le cas.
 
 ## Traitement d'une inscription à un parcours
 
@@ -179,6 +182,12 @@ select distinct id_evt from compo_parcours cmp where cmp.idp = idpa;
 ```
 
 Puis, en utilisant la boucle *for*, on parcours le curseur et on remplis la relation inscrip_evt.
+
+```plsql
+For Unevt in lesEvt LOOP
+	INSERT INTO inscrip_evt values (idCa,idpa,Unevt.id_evt);
+END LOOP;
+```
 
 ### Q2
 

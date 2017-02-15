@@ -3,7 +3,6 @@ CREATE OR REPLACE TRIGGER propParcours
 AFTER INSERT ON achats
 FOR EACH ROW
 DECLARE
-	genreLiv Livres.genre%type;	
 	cursor lesParcs is select distinct intitulep,date_deb
 					from parcours p
 					where p.genre = (select genre FROM Livres l WHERE l.refl = :new.refl) and p.date_deb > (select sysdate from dual)
