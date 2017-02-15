@@ -7,6 +7,10 @@
 ### Q1
 
 #### a)
+Pour ajouter la nouvelle colonne dans la relation *Livres*, on utilise la commande suivante :
+```plsql
+Alter table Livres add note_moy(4,2)
+```
 
 ```plsql
 DECLARE
@@ -200,4 +204,3 @@ order by date_deb asc;
   	DBMS_OUTPUT.PUT_LINE('"'||n.intitulep||'" commencant le '||n.date_deb);
   END LOOP;
   ```
-
