@@ -27,7 +27,7 @@ END;
 
 #### b)
 
-​	Pour récupérer toutes les références des livres que l'on possède dans notre base de données, on utilise un curseur nous permettantde parcourir et de récupérer une à une les lignes du résultat de la requête suivante:
+​	Pour récupérer toutes les références des livres que l'on possède dans notre base de données, on utilise un curseur nous permettant de parcourir et de récupérer une à une les lignes du résultat de la requête suivante:
 
 ```plsql
 cursor lesrefls is select refl from livres;
@@ -87,7 +87,7 @@ END;
 /
 ```
 
-​	On écrit le trigger suivant qui s'applique après l'ajout ou la modification d'un avis. Le but est de modifier dynamiquement la note moyenne de livre pour chaque avis exprimé. Mais on obtient une erreur en lançant la requête suivante :
+​	On écrit le trigger ci-dessus qui s'applique après l'ajout ou la modification d'un avis. Le but est de modifier dynamiquement la note moyenne de livre pour chaque avis exprimé. Mais on obtient une erreur en lançant la requête suivante :
 
 ```plsql
 INSERT INTO AVIS Values (6,'03B3',16.5,NULL);
@@ -102,9 +102,9 @@ ORA-06512: at "DEMNA.MAJ_NOTE_MOY", line 5
 ORA-04088: error during execution of trigger 'DEMNA.MAJ_NOTE_MOY'
 ```
 
-​	Le SGBD nous empêche d'utiliser les données qu'on veux ajouter dans notre bdd, parce que la requete par laquelle on modifie ou ajoute ladonnée peuvent echoué, comme ça on garantie l'integrité de la base des données.  //j'avoue pas comprendre. j'ai moitié oublié ce que isabelle avait expliqué pendant le TP
+​	Le SGBD nous empêche de modifier la table livre afin de garantir l'intégrité de la base de données.
 
-​	Pour éviter cette erreur, on ajoute la ligne suivante :
+​	Pour continuer le TP sans cette erreur, on ignore ce trigger avec la ligne suivante :
 
 ```plsql
 DROP TRIGGER maj_note_moy;
@@ -166,23 +166,23 @@ END;
 /
 ```
 
-Ici le but de cette procedure est de verifier que l'utilisateur modifie bien son avis sur un livre. Dans la procedure quand le client modifie la note attribuée ou la commentaire, s'il laisse vide les champs de la note  ou la commentaire dans la base de données ces deux valeurs vont garder même valeur. Avant de lancer la requête *update* on verifie que pour *idcl* et *refl* passé en parametre existe un tuplet correspondant, si ça existe pas on leve l'exception.
+Ici le but de cette procédure est de vérifier que l'utilisateur modifie bien son avis sur un livre. Dans la procédure, quand le client modifie la note attribuée ou le commentaire, s'il laisse vide les champs de la note ou le commentaire dans la base de données, ces valeurs vont conserver leur état initial. Avant de lancer la requête *update*, on vérifie que les valeurs de *idcl* et *refl* passées en paramètre correspondent bien à un tuple existant. On lève une exception si ça n'est pas le cas.
 
 ## Traitement d'une inscription à un parcours
 
 ### Q1
 
-En utilisant les paramètre passés en paramètre, on remplit automatiquement la relation *inscrip_parcours*, puis en utilisant le cursor, on recupere les *id_evt* à partir du relation *compo_parcours*  en utilisant la requête suivente:
+En utilisant les valeurs passés en paramètre, on remplit automatiquement la relation *inscrip_parcours*, puis en utilisant le curseur, on récupère les *id_evt* à partir de la relation *compo_parcours* en utilisant la requête suivante :
 
 ```plsql
 select distinct id_evt from compo_parcours cmp where cmp.idp = idpa;
 ```
 
-Puis en utilisant le bouvle *for* on parcour le cursor et on remplie le relation inscrip_evt.
+Puis, en utilisant la boucle *for*, on parcours le curseur et on remplis la relation inscrip_evt.
 
 ### Q2
 
-Pour afficher les parcours correspondant au genre de livre acheté, on utilise la requête suivante :
+Pour afficher les parcours correspondant au genre du livre acheté, on utilise la requête suivante :
 
 ```plsql
 select distinct intitulep,date_deb 
@@ -194,9 +194,9 @@ and p.date_deb > (select sysdate from dual)
 order by date_deb asc;
 ```
 
-- *select sysdate from dual* = permet obtenir la date d'aujourd'hui.
+- *select sysdate from dual* = permet d'obtenir la date d'aujourd'hui.
 
-- Le resultat de cette requête est mis dans le cursor. Puis on affiche le contenu du cursor en utilisant les instructions suivante :
+- Le résultat de cette requête est mis dans le curseur, puis on affiche le contenu du curseur en utilisant les instructions suivantes :
 
   ```plsql
   DBMS_OUTPUT.PUT_LINE('On vous propose les parours suivants :');
