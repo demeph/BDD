@@ -39,6 +39,7 @@
 
 ###Q2
 |Nom de Tableau | nombre de Ligne |
+|---|---|
 | facts |  473176 |
 | authors | 454807 |
 | collaborations | 1212896 |
