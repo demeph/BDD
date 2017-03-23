@@ -1,0 +1,341 @@
+GROUPE TP
+Demetre PHALAVANDISHVILI
+COMPTE L3_35
+*************************************************************
+******************** CREATE TABLE ***************************
+*************************************************************
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+*************************************************************
+******************** INSERT TABLE ***************************
+*************************************************************
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+Commit complete.
+
+*************************************************************
+******************** AFFICHAGE TABLE ************************
+*************************************************************
+
+NOM_JEU                        TYPE_JEU                                                                                                               
+------------------------------ ------------------------------                                                                                         
+DESCRIPTION_COURTE                                                                                                                                    
+------------------------------------------------------------------------------------------------------------------------------------------------------
+      PRIX DATE_SORT AGE_MINIMUM EDITEUR                                                                                                              
+---------- --------- ----------- ------------------------------                                                                                       
+The Witcher                    Action-RPG                                                                                                             
+Base sur l'univers m?dieval-fantastique d'Andrzej Sapkowski, (...)                                                                                    
+        30 30-OCT-07          18 Atari                                                                                                                
+                                                                                                                                                      
+Mass Effect                    Action-RPG                                                                                                             
+En 2148, l'humanite decouvre sur la planete Mars les vestiges d'une civilisation disparue, les Protheens, permettant un bond technologique qui lui per
+met de voyager a travers l'espace (...)                                                                                                               
+        30 28-MAY-08          18 Electronic Arts                                                                                                      
+                                                                                                                                                      
+Anno 2205                      Gestion                                                                                                                
+Bienvenue en 2205. voil? un siecle, l'Humanite s'est elancee vers les etoiles pour peupler la lune ? l'occasion de la premiere vague de colonisation l
+unaire. ce  (...)                                                                                                                                     
+        50 03-NOV-15           0 Ubisoft                                                                                                              
+                                                                                                                                                      
+SpeedRunners                   Plates-formes                                                                                                          
+SpeedRunners. Un jeu de course multijoueur a couper le souffle qui oppose 4 joueurs les uns contre les autres, (...)                                  
+        15 19-APR-16           0 TinyBuild Games                                                                                                      
+                                                                                                                                                      
+Dragon Age Inquisition         Jeu de role (RPG)                                                                                                      
+Dragon Age: Inquisition prend place en Thedas, le monde fantastique dans lequel les deux jeux precedents se deroulaient. Le jeu couvre un territoire g
+?ographique (...)                                                                                                                                     
+        40 18-NOV-14          12 Electronic Arts                                                                                                      
+                                                                                                                                                      
+
+
+PSEUDO            AGE    NB_JEUX                                                                                                                      
+---------- ---------- ----------                                                                                                                      
+SilCom             12          1                                                                                                                      
+iCreeZiK           21          0                                                                                                                      
+VolTaj             22          2                                                                                                                      
+FaraY              18          0                                                                                                                      
+SkyZze              9          0                                                                                                                      
+
+
+NOM_JEU                        PSEUDO     DATE_ACHA                                                                                                   
+------------------------------ ---------- ---------                                                                                                   
+SpeedRunners                   VolTaj     11-MAR-17                                                                                                   
+SpeedRunners                   SilCom     11-MAR-17                                                                                                   
+Mass Effect                    VolTaj     15-FEB-17                                                                                                   
+
+*************************************************************
+******************** QUESTION 1 *****************************
+*************************************************************
+
+View dropped.
+
+
+View created.
+
+
+
+*************************************************************
+******************** QUESTION 2 *****************************
+*************************************************************
+
+NOM_JEU                        TYPE_JEU                             PRIX DATE_SORT                                                                    
+------------------------------ ------------------------------ ---------- ---------                                                                    
+Mass Effect                    Action-RPG                             30 28-MAY-08                                                                    
+SpeedRunners                   Plates-formes                          15 19-APR-16                                                                    
+SpeedRunners                   Plates-formes                          15 19-APR-16                                                                    
+
+
+
+*************************************************************
+******************** QUESTION 3 *****************************
+*************************************************************
+
+Trigger created.
+
+No errors.
+
+NOM_JEU                        TYPE_JEU                                                                                                               
+------------------------------ ------------------------------                                                                                         
+DESCRIPTION_COURTE                                                                                                                                    
+------------------------------------------------------------------------------------------------------------------------------------------------------
+      PRIX DATE_SORT AGE_MINIMUM EDITEUR                                                                                                              
+---------- --------- ----------- ------------------------------                                                                                       
+The Witcher                    Action-RPG                                                                                                             
+Base sur l'univers m?dieval-fantastique d'Andrzej Sapkowski, (...)                                                                                    
+        30 30-OCT-07          18 Atari                                                                                                                
+                                                                                                                                                      
+Mass Effect                    Action-RPG                                                                                                             
+En 2148, l'humanite decouvre sur la planete Mars les vestiges d'une civilisation disparue, les Protheens, permettant un bond technologique qui lui per
+met de voyager a travers l'espace (...)                                                                                                               
+        30 28-MAY-08          18 Electronic Arts                                                                                                      
+                                                                                                                                                      
+Anno 2205                      Gestion                                                                                                                
+Bienvenue en 2205. voil? un siecle, l'Humanite s'est elancee vers les etoiles pour peupler la lune ? l'occasion de la premiere vague de colonisation l
+unaire. ce  (...)                                                                                                                                     
+        50 03-NOV-15           0 Ubisoft                                                                                                              
+                                                                                                                                                      
+SpeedRunners                   Plates-formes                                                                                                          
+SpeedRunners. Un jeu de course multijoueur a couper le souffle qui oppose 4 joueurs les uns contre les autres, (...)                                  
+        15 19-APR-16           0 TinyBuild Games                                                                                                      
+                                                                                                                                                      
+Dragon Age Inquisition         Jeu de role (RPG)                                                                                                      
+Dragon Age: Inquisition prend place en Thedas, le monde fantastique dans lequel les deux jeux precedents se deroulaient. Le jeu couvre un territoire g
+?ographique (...)                                                                                                                                     
+        40 18-NOV-14          12 Electronic Arts                                                                                                      
+                                                                                                                                                      
+
+
+PSEUDO            AGE    NB_JEUX                                                                                                                      
+---------- ---------- ----------                                                                                                                      
+SilCom             12          1                                                                                                                      
+iCreeZiK           21          0                                                                                                                      
+VolTaj             22          2                                                                                                                      
+FaraY              18          0                                                                                                                      
+SkyZze              9          0                                                                                                                      
+
+
+NOM_JEU                        PSEUDO     DATE_ACHA                                                                                                   
+------------------------------ ---------- ---------                                                                                                   
+SpeedRunners                   VolTaj     11-MAR-17                                                                                                   
+SpeedRunners                   SilCom     11-MAR-17                                                                                                   
+Mass Effect                    VolTaj     15-FEB-17                                                                                                   
+
+
+1 row created.
+
+
+1 row created.
+
+
+PSEUDO            AGE    NB_JEUX                                                                                                                      
+---------- ---------- ----------                                                                                                                      
+SilCom             12          3                                                                                                                      
+iCreeZiK           21          0                                                                                                                      
+VolTaj             22          2                                                                                                                      
+FaraY              18          0                                                                                                                      
+SkyZze              9          0                                                                                                                      
+
+
+
+*************************************************************
+******************** QUESTION 4 *****************************
+*************************************************************
+
+Procedure created.
+
+No errors.
+
+NOM_JEU                        AGE_MINIMUM                                                                                                            
+------------------------------ -----------                                                                                                            
+The Witcher                             18                                                                                                            
+Mass Effect                             18                                                                                                            
+Anno 2205                                0                                                                                                            
+SpeedRunners                             0                                                                                                            
+Dragon Age Inquisition                  12                                                                                                            
+
+
+PSEUDO            AGE                                                                                                                                 
+---------- ----------                                                                                                                                 
+SilCom             12                                                                                                                                 
+iCreeZiK           21                                                                                                                                 
+VolTaj             22                                                                                                                                 
+FaraY              18                                                                                                                                 
+SkyZze              9                                                                                                                                 
+
+
+NOM_JEU                        PSEUDO     DATE_ACHA                                                                                                   
+------------------------------ ---------- ---------                                                                                                   
+SpeedRunners                   VolTaj     11-MAR-17                                                                                                   
+SpeedRunners                   SilCom     11-MAR-17                                                                                                   
+Mass Effect                    VolTaj     15-FEB-17                                                                                                   
+Mass Effect                    SilCom     23-MAR-17                                                                                                   
+The Witcher                    SilCom     23-MAR-17                                                                                                   
+
+BEGIN achat_jeu('SkyZze','Dragon Age Inquisition'); END;
+
+*
+ERROR at line 1:
+ORA-20001: Vous avez pas l'age minimum pour acheter ce jeux 
+ORA-06512: at "L3_35.ACHAT_JEU", line 23 
+ORA-06512: at line 1 
+
+
+
+PL/SQL procedure successfully completed.
+
+
+NOM_JEU                        PSEUDO     DATE_ACHA                                                                                                   
+------------------------------ ---------- ---------                                                                                                   
+SpeedRunners                   VolTaj     11-MAR-17                                                                                                   
+SpeedRunners                   SilCom     11-MAR-17                                                                                                   
+Mass Effect                    VolTaj     15-FEB-17                                                                                                   
+Mass Effect                    SilCom     23-MAR-17                                                                                                   
+The Witcher                    SilCom     23-MAR-17                                                                                                   
+Anno 2205                      VolTaj     23-MAR-17                                                                                                   
+
+6 rows selected.
+
+
+
+*************************************************************
+******************** QUESTION 5 *****************************
+*************************************************************
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+
+*************************************************************
+******************** QUESTION BONUS *************************
+*************************************************************
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT                                                                                                                                     
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 3972515418                                                                                                                           
+                                                                                                                                                      
+-------------------------------------------------------------------------------------                                                                 
+| Id  | Operation         | Name            | Rows  | Bytes | Cost (%CPU)| Time     |                                                                 
+-------------------------------------------------------------------------------------                                                                 
+|   0 | SELECT STATEMENT  |                 |     2 |    66 |     3   (0)| 00:00:01 |                                                                 
+|*  1 |  TABLE ACCESS FULL| TP_JEUX_ACHETES |     2 |    66 |     3   (0)| 00:00:01 |                                                                 
+-------------------------------------------------------------------------------------                                                                 
+                                                                                                                                                      
+Predicate Information (identified by operation id):                                                                                                   
+---------------------------------------------------                                                                                                   
+                                                                                                                                                      
+   1 - filter("DATE_ACHAT"=TO_DATE(' 2017-03-11 00:00:00', 'syyyy-mm-dd                                                                               
+              hh24:mi:ss'))                                                                                                                           
+                                                                                                                                                      
+Note                                                                                                                                                  
+-----                                                                                                                                                 
+   - dynamic sampling used for this statement (level=2)                                                                                               
+
+18 rows selected.
+
+
+Explained.
+
+
+PLAN_TABLE_OUTPUT                                                                                                                                     
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Plan hash value: 3972515418                                                                                                                           
+                                                                                                                                                      
+-------------------------------------------------------------------------------------                                                                 
+| Id  | Operation         | Name            | Rows  | Bytes | Cost (%CPU)| Time     |                                                                 
+-------------------------------------------------------------------------------------                                                                 
+|   0 | SELECT STATEMENT  |                 |     2 |    66 |     3   (0)| 00:00:01 |                                                                 
+|*  1 |  TABLE ACCESS FULL| TP_JEUX_ACHETES |     2 |    66 |     3   (0)| 00:00:01 |                                                                 
+-------------------------------------------------------------------------------------                                                                 
+                                                                                                                                                      
+Predicate Information (identified by operation id):                                                                                                   
+---------------------------------------------------                                                                                                   
+                                                                                                                                                      
+   1 - filter("DATE_ACHAT"=TO_DATE(' 2017-03-11 00:00:00', 'syyyy-mm-dd                                                                               
+              hh24:mi:ss'))                                                                                                                           
+                                                                                                                                                      
+Note                                                                                                                                                  
+-----                                                                                                                                                 
+   - dynamic sampling used for this statement (level=2)                                                                                               
+
+18 rows selected.
+
